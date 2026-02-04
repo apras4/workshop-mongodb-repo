@@ -2,7 +2,7 @@
 
 async function createReview(review) {
     // ---------------------------------
-    // const response = await fetch(`${api_url}/api/reviews`, {
+    // const response = await fetch(`${api_url}/api/reviews`, { // we are sending a POST request telling the backend "hey! store this"
     //     method: 'POST',
     //     headers: {
     //         'Content-Type': 'application/json'
@@ -27,7 +27,7 @@ const reviewArray = [];
 async function fetchAndUpdateMovieCards() {
     // ---------------------------------
     // try {
-    //     const response = await fetch(`${api_url}/api/reviews`);
+    //     const response = await fetch(`${api_url}/api/reviews`); // fetch is a GET request we are sending to localhost/3000/api/reviews
     //     if(!response.ok) {
     //         throw new Error('Failed to fetch reviews');
     //     }
@@ -62,7 +62,6 @@ async function fetchAndUpdateMovieCards() {
 
 document.getElementById('movie-form').addEventListener('submit', function(e) {
     e.preventDefault(); // prevent default form submission behavior
-
     const formData = new FormData(this); // formdata object created
     
     const review = {
