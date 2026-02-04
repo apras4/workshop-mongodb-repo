@@ -15,7 +15,7 @@ const Schema = mongoose.Schema;
 
 const movieReviewSchema = new Schema({
     // write your code for attribute here:
-
+    
 }, { timestamps: true }); // timestamps will automatically be added when we create or update a review
 
 // now we can use this schema to create a model

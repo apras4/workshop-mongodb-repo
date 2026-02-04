@@ -44,9 +44,8 @@ mongoose.connect(process.env.MONGODB_URI) // this is an asynchronous operation t
 // });
 
 
-// now let's create the API route that should trigger for general code
-// when the request comes from the frontend, the request will have a body
-// this body, containing {title, desc, and rating} is what we will add to the database
+// now let's create the API route that's general
+// this one posts the body, containing {title, desc, and rating} coming from our form
 
 // app.post('/api/reviews', async (req, res) => {
 //     try {
@@ -59,13 +58,4 @@ mongoose.connect(process.env.MONGODB_URI) // this is an asynchronous operation t
 //     }
 // });
 
-// getting or reading all reviews from the db
-
-// app.get('/api/reviews', async (req, res) => {
-//     try {
-//         const reviews = await MovieReview.find({});
-//         res.json(reviews);
-//     } catch (err) {
-//         res.status(500).json({ error: err.message });
-//     }
-// });
+// now let's write the API route for reading all reviews from the DB
