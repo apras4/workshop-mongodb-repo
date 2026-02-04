@@ -1,4 +1,4 @@
-const api_url = "http://localhost:3000"; // same as server port
+// const api_url = "http://localhost:3000"; // same as server port
 
 async function createReview(review) {
     // ---------------------------------
@@ -19,8 +19,7 @@ async function createReview(review) {
     fetchAndUpdateMovieCards();
 }
 
-// ----------------
-// handling updating movie review cards from the db
+// handling updating movie review cards
 
 const movieCards = document.getElementsByClassName('movie-cards');
 const reviewArray = [];
@@ -58,13 +57,14 @@ async function fetchAndUpdateMovieCards() {
     // } catch (error) {
     //     console.error('Error fetching reviews:', error);
     // }
+    // --------------------------------
 }
 
 document.getElementById('movie-form').addEventListener('submit', function(e) {
     e.preventDefault(); // prevent default form submission behavior
 
     const formData = new FormData(this); // formdata object created
-    console.log(formData.get('title'));
+    
     const review = {
         title: formData.get('title'),
         description: formData.get('description'),

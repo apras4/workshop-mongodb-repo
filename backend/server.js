@@ -81,4 +81,3 @@ app.get('/api/reviews', async (req, res) => {
 
 // model for the database -> show how to set up a schema
 
-
