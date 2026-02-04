@@ -1,4 +1,4 @@
-// const api_url = "http://localhost:3000"; // same as server port
+const api_url = "http://localhost:3000"; // same as server port
 
 async function createReview(review) {
     // ---------------------------------
@@ -10,7 +10,7 @@ async function createReview(review) {
     //     body: JSON.stringify(review)
     // });
     
-    // if(!response.ok) {
+    // if(!response.ok) { // status of 500 would trigger this error
     //     throw new Error('Failed to create a review');
     // }   
     // ---------------------------------
@@ -22,19 +22,20 @@ async function createReview(review) {
 // handling updating movie review cards
 
 const movieCards = document.getElementsByClassName('movie-cards');
-const reviewArray = [];
+
+const reviewArray = []; // we will change this later
 
 async function fetchAndUpdateMovieCards() {
     // ---------------------------------
     // try {
-    //     const response = await fetch(`${api_url}/api/reviews`); // fetch is a GET request we are sending to localhost/3000/api/reviews
-    //     if(!response.ok) {
-    //         throw new Error('Failed to fetch reviews');
-    //     }
+        // const response = await fetch(`${api_url}/api/reviews`); // fetch is a GET request we are sending to localhost/3000/api/reviews
+        // if(!response.ok) {
+        //     throw new Error('Failed to fetch reviews');
+        // }
 
-    //     const data = await response.json();
+        // const data = await response.json();
 
-    //     console.log(data)
+        // console.log(data)
 
     // --------------------------------
 
@@ -74,4 +75,4 @@ document.getElementById('movie-form').addEventListener('submit', function(e) {
     createReview(review);
 });
 
-// fetchAndUpdateMovieCards(); // renders cards upon page load
+fetchAndUpdateMovieCards(); // renders cards upon page load

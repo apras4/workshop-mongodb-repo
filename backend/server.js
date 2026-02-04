@@ -1,14 +1,13 @@
 // This is the server code
 const express = require('express'); // everything that follows "app.___" is from express
 
-// const MovieReview = require('./schema/MovieReview');
-const cors = require('cors');
+const MovieReview = require('./schema/MovieReview');
+const cors = require('cors'); // to securely connect the frontend and the backend, include this
 const mongoose = require('mongoose');
 require('dotenv').config(); // important! this loads the keys in your .env file while running your server.
                             // This is because you should never put hard code these keys, their secret!
 
 const app = express(); // app is now the instance of your server
-
 app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
@@ -26,6 +25,28 @@ mongoose.connect(process.env.MONGODB_URI) // this is an asynchronous operation t
 // ------ Routes -----------
 
 // posting or creating a new review in the db
+
+// let's try a hard coded document and see if this shows up on the DB
+
+// app.get('/api/create-review', async (req, res) => {
+//     try {
+//         const newReview = new MovieReview({
+//             title: "Lalaland",
+//             description: "movie was good",
+//             rating: 5
+//         });
+
+//         const savedReview = await newReview.save();
+//         res.status(201).json(savedReview);
+//     } catch (err) {
+//         res.status(400).json({ error: err.message });
+//     }
+// });
+
+
+// now let's create the API route that should trigger for general code
+// when the request comes from the frontend, the request will have a body
+// this body, containing {title, desc, and rating} is what we will add to the database
 
 // app.post('/api/reviews', async (req, res) => {
 //     try {

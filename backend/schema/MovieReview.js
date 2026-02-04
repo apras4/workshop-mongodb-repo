@@ -14,13 +14,13 @@ const Schema = mongoose.Schema;
 // ---------
 
 const movieReviewSchema = new Schema({
-    // CODE GOES HERE
-    
+    // write your code for attribute here:
+
 }, { timestamps: true }); // timestamps will automatically be added when we create or update a review
 
 // now we can use this schema to create a model
-const MovieReview = mongoose.model('Review', movieReviewSchema); // name is important, has to be singular and capitalized
-module.exports = MovieReview;                                    // mongoose will pluralize it for the collection name --> so if you put the name as Review, the collection will be Reviews
+const MovieReview = mongoose.model('review', movieReviewSchema);
+module.exports = MovieReview;                                   
 
 
 
