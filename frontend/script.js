@@ -1,46 +1,48 @@
 const api_url = "http://localhost:3000"; // same as server port
 
 async function createReview(review) {
-    const response = await fetch(`${api_url}/api/reviews`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(review)
-    });
+    // ---------------------------------
+    // const response = await fetch(`${api_url}/api/reviews`, {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify(review)
+    // });
     
-    if(!response.ok) {
-        throw new Error('Failed to create a review');
-    }   
+    // if(!response.ok) {
+    //     throw new Error('Failed to create a review');
+    // }   
+    // ---------------------------------
 
-    document.getElementById('movie-form').reset();
+    document.getElementById('movie-form').reset(); // reset the form after submission
     fetchAndUpdateMovieCards();
 }
-
-// getReviews(); // calling this every time our page reloads
-
 
 // ----------------
 // handling updating movie review cards from the db
 
 const movieCards = document.getElementsByClassName('movie-cards');
+const reviewArray = [];
 
 async function fetchAndUpdateMovieCards() {
-    try {
-        const response = await fetch(`${api_url}/api/reviews`);
-        if(!response.ok) {
-            throw new Error('Failed to fetch reviews');
-        }
+    // ---------------------------------
+    // try {
+    //     const response = await fetch(`${api_url}/api/reviews`);
+    //     if(!response.ok) {
+    //         throw new Error('Failed to fetch reviews');
+    //     }
 
-        const data = await response.json();
+    //     const data = await response.json();
 
-        console.log(data);
+    //     console.log(data)
 
-        // update the DOM with the fetched reviews
+    // --------------------------------
+
         movieCards[0].innerHTML = ''; // clear existing cards
 
         // loop through data and create cards
-        data.forEach(review => {
+        reviewArray.forEach(review => {
             const card = document.createElement('div');
             card.className = 'movie-card';
             card.innerHTML = `
@@ -51,9 +53,11 @@ async function fetchAndUpdateMovieCards() {
 
             movieCards[0].appendChild(card);
         });
-    } catch (error) {
-        console.error('Error fetching reviews:', error);
-    }
+
+    // --------------------------------
+    // } catch (error) {
+    //     console.error('Error fetching reviews:', error);
+    // }
 }
 
 document.getElementById('movie-form').addEventListener('submit', function(e) {
@@ -67,7 +71,8 @@ document.getElementById('movie-form').addEventListener('submit', function(e) {
         rating: formData.get('rating')
     };
 
+    reviewArray.push(review); // adding to array
     createReview(review);
 });
 
-fetchAndUpdateMovieCards();
+// fetchAndUpdateMovieCards(); // renders cards upon page load
